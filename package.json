@@ -1,0 +1,20 @@
+{
+  "name": "vetflow-bff",
+  "version": "1.0.0",
+  "description": "VetFlow - Backend for Frontend (agregação e proxy dos microserviços e da Azure Function)",
+  "type": "module",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "dev": "node --watch src/main.js",
+    "test": "node --test \"tests/**/*.test.js\""
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "author": "Bernardo Vieira, Murilo Regnier",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
