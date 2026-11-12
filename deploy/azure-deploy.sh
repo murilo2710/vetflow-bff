@@ -44,7 +44,7 @@ cmd_infra() {
   az sql server create -g "$RG" -n "$SQLSERVER" -l "$LOC" --admin-user vetflowadmin --admin-password "$SQLPASS" -o none
   az sql server firewall-rule create -g "$RG" -s "$SQLSERVER" -n AllowAzureServices --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0 -o none
   if ! az sql db create -g "$RG" -s "$SQLSERVER" -n vetflow-agenda --edition GeneralPurpose --compute-model Serverless \
-       --family Gen5 --capacity 2 --use-free-limit --free-limit-exhaustion-behavior AutoPause -o none; then
+       --family Gen5 --capacity 2 --backup-storage-redundancy Local --use-free-limit --free-limit-exhaustion-behavior AutoPause -o none; then
     echo "Oferta gratuita indisponível por CLI; criando Basic (5 DTU, ~US\$5/mês, coberto pelo crédito do Azure for Students)"
     az sql db create -g "$RG" -s "$SQLSERVER" -n vetflow-agenda --service-objective Basic -o none
   fi
